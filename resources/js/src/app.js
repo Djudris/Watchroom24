@@ -189,4 +189,3 @@ export function createApp(options, store)
 
     return app;
 }
-console.log('Mounted')

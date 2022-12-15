@@ -95,31 +95,9 @@ export default {
             return this.requiredAddressFields[iso];
         },
 
-        countryList()
-        {
-            // if it's for a billing address we add every eu country to the list due to legal obligations
-            if (this.addressType === "1")
-            {
-                const activeCountries = this.$store.state.localization.shippingCountries;
-                const euCountries = this.$store.state.localization.euShippingCountries;
-                const allCountries = [...activeCountries, ...euCountries];
-
-                let combinedCountries = {};
-                allCountries.forEach(country => {
-                    combinedCountries[country.id] = country;
-                });
-
-                combinedCountries = Object.values(combinedCountries);
-                combinedCountries = combinedCountries.sort((a, b) => a.currLangName.localeCompare(b.currLangName));
-
-                return combinedCountries;
-            }
-
-            return this.$store.state.localization.shippingCountries
-        },
-
         ...mapState({
-            shippingCountryId: state => state.localization.shippingCountryId
+            shippingCountryId: state => state.localization.shippingCountryId,
+            countryList: state => state.localization.shippingCountries
         })
     },
 
@@ -137,7 +115,7 @@ export default {
          */
         countryChanged(value)
         {
-            this.$emit("country-changed", this.getCountryById(parseInt(value)) ?? this.countryList[0]);
+            this.$emit("country-changed", this.getCountryById(parseInt(value)));
             this.$emit("state-changed", null);
         },
 
@@ -171,7 +149,7 @@ export default {
         {
             const countryId = this.selectedCountryId || this.shippingCountryId;
 
-            this.selectedCountry = this.getCountryById(countryId) ?? this.countryList[0];
+            this.selectedCountry = this.getCountryById(countryId);
 
             if (this.selectedCountry)
             {

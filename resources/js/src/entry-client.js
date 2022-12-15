@@ -11,7 +11,7 @@ import { initClientListeners, initClientStore, createStore } from "./app/store";
 import { initListener } from "./app/services/ApiService";
 import { mount } from "./mount";
 import "./app/jQuery";
-
+console.log('TEST')
 Vue.prototype.$mount = mount;
 
 // defines if the render location is the client

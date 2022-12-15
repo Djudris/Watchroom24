@@ -1,37 +1,6 @@
 # Release Notes für plentyShop LTS
 
-## v5.0.56 (2022-11-08) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.55...5.0.56" target="_blank" rel="noopener"><b>Übersicht aller Änderungen</b></a>
-
-### TODO
-
-- Die ShopBuilder-Inhalte für Bestellbestätigungsseiten müssen im Menü **CMS » ShopBuilder** über die Schaltfläche **Inhalte neu generieren** aktualisiert werden.
-- Falls du Gastkund:innen die Möglichkeit geben willst, einen neuen Auftragsbestätigungslink anzufordern, musst du dafür eine neue E-Mail-Vorlage erstellen und verknüpfen. Weitere Informationen findest du auf der <a href="https://knowledge.plentymarkets.com/de-de/manual/main/webshop/shop-builder.html#softlogin" target="_blank">ShopBuilder-Handbuchseite</a>.
-
-### Hinzugefügt
-
-- Die Softlogin-Funktionalität wurde überarbeitet. Falls die Gültigkeit des Auftragsbestätigungslinks im PlentyShop LTS-Assistenten auf **Immer** gesetzt ist, können Gastkund:innen nun nach 90 Tagen einen neuen Auftragsbestätigungslink anfordern, indem sie den ursprünglichen Auftragsbestätigungslink öffnen. Kund:innen erhalten den neuen Auftragsbestätigungslink per E-Mail. Bitte beachte auch das TODO. Weitere Informationen findest du auf der <a href="https://knowledge.plentymarkets.com/de-de/manual/main/webshop/shop-builder.html#softlogin" target="_blank">ShopBuilder-Handbuchseite</a>.
-- Für die Anrede bei neuen Adressen in der Kaufabwicklung oder im Mein-Konto-Bereich kann jetzt die Option **Bitte auswählen** als Vorauswahl festgelegt werden. Bei den ShopBuilder-Widgets für Rechnungs- und Lieferadressen kannst du die Vorauswahl über die Einstellung **Vorausgewählte Anrede** in den Widget-Einstellungen steuern. Falls du keine ShopBuilder-Seiten verwendest, kannst du die Vorauswahl der Anrede über die Einstellung **Vorausgewählte Anrede** im Tab **Kaufabwicklung und Mein Konto** der plentyShop LTS-Einstellungen steuern.
-
-### Geändert
-
-- Wenn ein EU-Land als Lieferland im plentyShop ausgewählt werden kann, stehen jetzt alle EU-Länder für die Rechnungsadresse zur Verfügung. Durch diese Änderung erfüllt plentyShop LTS die Geoblocking-Veordnung VO EU Nr. 2018/302.
-
-### Behoben
-
-- In Version 5.0.55 wurden `aria-label` für die Seitennummerierung auf Artikelkategorieseiten verbaut. Bei dieser Änderung kam es zu einem Fehler, der nun behoben wurde.
-- Auf Auftragsbestätigungsseiten, die über den ShopBuilder erstellt wurden, wurde das voraussichtliche Versanddatum nicht im korrekten Format angezeigt. Dies wurde behoben.
-- Das Skript zum Kompilieren von SCSS-Dateien (`bundleSass.js`) entfernt jetzt alte Dateien aus dem Zielordner. Durch diese Anpassungen werden einige Import-Fehler beim Bereitstellen von Plugins behoben.
-- Bestehende Konfigurationsvorschauen des plentyShop LTS-Assistenten werden jetzt beim Kopieren eines Plugin-Sets in das neue Plugin-Set übernommen. Durch einen Fehler wurden zuvor keine Kacheln für die Assistentenkonfigurationen in der Konfigurationsübersicht des plentyShop LTS-Assistenten angezeigt.
-- Es wurden fehlende Übersetzungsschlüssel ergänzt, die nur in den Sprachen Deutsch und Englisch verfügbar waren.
-- Für ShopBuilder-Inhalte vom Typ "Artikelsuchergebnis" wurde die Sortieroption **Relevanz** für das Widget **Artikelsortierung** hinzugefügt.
-
-### Angepasste Templates
-
-- Im Zuge des Releases von Ceres 5.0.56 gab es Änderungen an Template-Dateien, die für Theme-Entwickler:innen relevant sind. Die Verlinkung führt direkt zu der umgesetzten Änderung in den entsprechenden Dateien.
-- [resources/views/Category/Item/Partials/Pagination.twig](https://github.com/plentymarkets/plugin-ceres/pull/3340/files#diff-1b8d2c7ce7416f660f89d11ad8e368be614c2b98efc30526e74286c7f180c3b8)
-- [resources/views/Widgets/OrderConfirmation/OrderDataWidget.twig](https://github.com/plentymarkets/plugin-ceres/pull/3339/files#diff-82affb09026a21fd94995e057ae7214f6751cf84dfed718216f4760865567c33)
-
-## v5.0.55 (2022-09-22) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.54...5.0.55" target="_blank" rel="noopener"><b>Übersicht aller Änderungen</b></a>
+## v5.0.55 (2022-09-22) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.55...5.0.56" target="_blank" rel="noopener"><b>Übersicht aller Änderungen</b></a>
 
 ### TODO
 

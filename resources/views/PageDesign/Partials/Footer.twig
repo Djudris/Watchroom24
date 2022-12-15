@@ -10,69 +10,21 @@
 {% if footerContainer is empty %}
 
 <div class="footer d-print-none">
-    <div class="btn text-center border mx-auto rounded-lg p-0{% if topButtonPosition == "right" %} back-to-top btn-secondary pt-1{% else %} back-to-top-center{% endif %}">
-        <i class="fa fa-chevron-up fa-2x default-float"></i>
+    <div class="back-to-top">
+        <span class="text d-none d-md-inline">{{ trans('Legend::Template.footerBackToTop') }}</span>
+        <i class="pl-material pl-chevron-up"></i>
     </div>
-
-    <div class="btn btn-secondary d-block d-md-none text-center p-2" v-scroll-to-top>
-        <i class="fa fa-arrow-up fa-2x default-float" aria-hidden="true"></i>
-    </div>
-
-    {% if numberOfFeatures > 0 %}
-        <div class="footer-features py-3 container-max">
-            <div class="row">
-                {% for i in 1..numberOfFeatures %}
-                    <div class="col-12 col-sm-4 text-center">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                        {{ trans('Ceres::Template.footerStoreFeature' ~ i) }}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
 
     <div class="container-max footer-content">
         <div class="row">
-            <div class="col-12">
-                <div class="footer-services d-flex mt-4">
-                    {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
-                    {% if paymentMethodContent|trim is not empty %}
-                        <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerPaymentMethods") }}</strong>
-                            {{ paymentMethodContent }}
-                        </div>
-                    {% endif %}
-                    {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
-                    {% if shippingContent|trim is not empty %}
-                        <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerOrderShippedBy") }}</strong>
-                            {{ shippingContent }}
-                        </div>
-                    {% endif %}
-                    {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
-                    {% if certifiedContent|trim is not empty %}
-                        <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerCertifiedBy") }}</strong>
-                            {{ certifiedContent }}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-            
-        <div class="row">
-            <hr class="my-4">
-            {% for i in 1..numberOfCols %}
-                <div class="col-6 col-sm-3 col-lg-2">
+            {% for i in 1..1 %}
+                <div class="col-12 col-sm-6 col-md-3">
                     <nav class="mb-4">
-                        <h2 class="h5 font-weight-bold">{{ trans('Ceres::Template.footerColumnTitle' ~ i) }}</h2>
+                        <h2 class="h5">{{ trans('Ceres::Template.footerColumnTitle' ~ i) }}</h2>
                         <ul class="list-unstyled">
-
                             {% set footerCategories = config('Ceres.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
                             {% for catID in footerCategories %}
-
                                 {% set cat = services.category.get(catID, lang) %}
-
                                 {% if cat is not null %}
                                     {% set displayedCategories = displayedCategories | merge([catID]) %}
                                     <li>
@@ -80,21 +32,75 @@
                                             {{ cat.details.first.name }}</a>
                                     </li>
                                 {% endif %}
-
                             {% endfor %}
 
+                            {% autoescape false %}
+                                <li><a href="{{ urls.cancellationRights }}">{{ trans("Ceres::Template.footerCancellationRight", {"hyphen": "&shy;"}) }}</a></li>
+                                {% if config("Ceres.footer.cancellation_use_pdf") == "true" %}
+                                    <li><a href="{{ config('Ceres.footer.cancellation_pdf_path') }}" target="_blank">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a></li>
+                                {% else %}
+                                    <li><a href="{{ urls.cancellationForm }}">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a></li>
+                                {% endif %}
+                                <li><a href="{{ urls.legalDisclosure }}">{{ trans("Ceres::Template.footerLegalDisclosure") }}</a></li>
+                                <li><a href="{{ urls.privacyPolicy }}">{{ trans("Ceres::Template.footerPrivacyPolicy", {"hyphen": "&shy;"}) }}</a></li>
+                                <li><a href="{{ urls.gtc }}">{{ trans("Ceres::Template.footerGtc") }}</a></li>
+                                {% if (config("Ceres.contact.shop_mail") | length > 0 and config("Ceres.contact.shop_mail") != "your@email.com") or config('IO.routing.category_contact') > 0 %}
+                                    <li><a href="{{ urls.contact }}">{{ trans("Ceres::Template.footerContact") }}</a></li>
+                                {% endif %}
+                            {% endautoescape %}
                         </ul>
                     </nav>
                 </div>
             {% endfor %}
-            <hr class="d-sm-none my-4">
-            <div class="col-6 col-sm-3">
+            <div class="col-12 col-sm-6 col-md-3">
+                <nav class="mb-4">
+                    <h2 class="h5">{{ trans('Ceres::Template.footerColumnTitle' ~ 2) }}</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">New Collection</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Manufacturers</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Terms & condition</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <nav class="mb-4">
+                    <h2 class="h5">Customer Service</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Search Terms</a></li>
+                        <li><a href="#">Advansed Search</a></li>
+                        <li><a href="#">Orders and Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">RSS</a></li>
+                        <li><a href="#">Help & FAQs</a></li>
+                        <li><a href="#">Consultant</a></li>
+                        <li><a href="#">Store Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <nav class="mb-4">
+                    <h2 class="h5">Stay Connected</h2>
+                    <div class="social-icons">
+                        <a href="#"><span class="pl-material pl-facebook"></span></a>
+                        <a href="#"><span class="pl-material pl-twitter"></span></a>
+                        <a href="#"><span class="pl-material pl-google-plus"></span></a>
+                        <a href="#"><span class="pl-material pl-instagram"></span></a>
+                        <a href="#"><span class="pl-material pl-pinterest"></span></a>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 col-sm-6">
                 {{ LayoutContainer.show("Ceres::Footer.RowOne") }}
             </div>
-            <div class="col-12 col-sm-3">
+            <div class="col-12 col-sm-6">
                 <div class="row">
                     {% set rowTwo = LayoutContainer.show("Ceres::Footer.RowTwo") %}
-                        
+
                     {{ rowTwo }}
 
                     <div class="col-12{% if rowTwo|trim is not empty %} col-sm-6 col-lg-12{% endif %}">
@@ -102,48 +108,39 @@
                     </div>
                 </div>
             </div>
-        </div>            
-
-        {% set cat = services.category.get(config('Ceres.global.category.legal_disclosure')) %}
-        <div class="copyright text-center my-3">
-            <div>
-                {% autoescape false %}
-                    <a class="py-4 px-2" href="{{ urls.cancellationRights }}">{{ trans("Ceres::Template.footerCancellationRight", {"hyphen": "&shy;"}) }}</a>
-                    {% if config("Ceres.footer.cancellation_use_pdf") == "true" %}
-                        <a class="py-4 px-2" href="{{ config('Ceres.footer.cancellation_pdf_path') }}" target="_blank">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
-                    {% else %}
-                        <a class="py-4 px-2" href="{{ urls.cancellationForm }}">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
-                    {% endif %}
-                    <a class="py-4 px-2" href="{{ urls.legalDisclosure }}">{{ trans("Ceres::Template.footerLegalDisclosure") }}</a>
-                    <a class="py-4 px-2" href="{{ urls.privacyPolicy }}">{{ trans("Ceres::Template.footerPrivacyPolicy", {"hyphen": "&shy;"}) }}</a>
-                    <a class="py-4 px-2" href="{{ urls.gtc }}">{{ trans("Ceres::Template.footerGtc") }}</a>
-                    {% if (config("Ceres.contact.shop_mail") | length > 0 and config("Ceres.contact.shop_mail") != "your@email.com") or config('IO.routing.category_contact') > 0 %}
-                        <a class="py-4 px-2" href="{{ urls.contact }}">{{ trans("Ceres::Template.footerContact") }}</a>
-                    {% endif %}
-                {% endautoescape %}
-            </div>
-            <a rel="nofollow" href="https://www.plentymarkets.com">
-                <img alt="plentymarkets logo" class="plenty-brand mt-4 mb-1" src="https://cdn01.plentymarkets.com/avw8j9fg70hi/frontend/plentyShop_LTS/plentymarkets-logo.svg" rel="nofollow">
-            </a>
-            <br>
-            <small>&copy; Copyright {{ "now" | date("Y") }} | {{ trans("Ceres::Template.footerAllRightsReserved") }}</small>
         </div>
     </div>
 </div>
 {% else %}
-    <div class="footer container-max d-print-none">
-        <div class="row">
-            <div class="col clearfix">
-                {{ footerContainer | raw }}
+    <div class="footer d-print-none">
+        <div class="back-to-top">
+            <span class="text d-none d-md-inline">{{ trans('Legend::Template.footerBackToTop') }}</span>
+            <i class="pl-material pl-chevron-up"></i>
+        </div>
+
+        <div class="container-max footer-content">
+            <div class="row">
+                <div class="col-12">
+                    {{ footerContainer | raw }}
+                </div>
             </div>
         </div>
+    </div>
+{% endif %}
 
-        <div class="btn text-center border mx-auto rounded-lg p-0{% if topButtonPosition == "right" %} back-to-top btn-secondary pt-1{% else %} back-to-top-center{% endif %}">
-            <i class="fa fa-chevron-up fa-2x default-float"></i>
-        </div>
-
-        <div class="btn btn-secondary d-block d-md-none text-center p-2" v-scroll-to-top>
-            <i class="fa fa-arrow-up fa-2x default-float" aria-hidden="true"></i>
+{% if config("Legend.footer.hide_plentylions_link") == "false" %}
+<div class="plentylions-link">
+    <div class="container-max footer-content">
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <p>
+                    <a href="https://plenty-lions.de" class="plenty-link" target="_blank" title="plentymarkets Ceres Template">
+                        plentymarkets Template von <img src="{{ plugin_path('Legend') }}/images/plentymarkets_template.png" alt="plentymarkets Template von plenty lions"> Plenty Lions
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
+</div>
 {% endif %}

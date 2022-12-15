@@ -45,10 +45,6 @@ export default {
         return {
             salutations: [
                 {
-                    key: "please select",
-                    name: "addressSalutationPleaseSelect"
-                },
-                {
                     key: "male",
                     name: "addressSalutationMale"
                 },
@@ -84,12 +80,12 @@ export default {
                 };
             });
 
-            if (this.enabledAddressFields[countryKey].includes(`${addressKey}.name1`) || this.enabledAddressFields[countryKey].includes(`${addressKey}.salutation`))
+            if (this.enabledAddressFields[countryKey].includes(`${addressKey}.name1`))
             {
                 return salutations;
             }
 
-            return salutations.filter(salutation => salutation.key !== "company" && salutation.key !== "please select");
+            return salutations.filter(salutation => salutation.key !== "company");
         }
     },
 

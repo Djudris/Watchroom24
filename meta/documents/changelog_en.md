@@ -1,38 +1,6 @@
 # Release Notes for plentyShop LTS
 
-## v5.0.56 (2022-11-08) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.55...5.0.56" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
-
-### TODO
-
-- The ShopBuilder contents for order confirmation pages must be updated in the **CMS » ShopBuilder** menu via the **Regenerate contents** button.
-- If you want to give guest customers the possibility to request a new order confirmation link, you have to create and link a new email template. You can find further information on the <a href="https://knowledge.plentymarkets.com/en-gb/manual/main/online-store/shop-builder.html#softlogin" target="_blank">ShopBuilder manual page</a>.
-
-### Added
-
-- The softlogin functionality has been revised. If the validity of the order confirmation link in the PlentyShop LTS assistent is set to **Always**, guest customers can now request a new order confirmation link after 90 days by opening the original order confirmation link. Customers will receive the new order confirmation link by email. Please note the TODO in this changelog. You can find further information on the <a href="https://knowledge.plentymarkets.com/en-gb/manual/main/online-store/shop-builder.html#softlogin" target="_blank">ShopBuilder manual page</a>.
-- For the salutation for new addresses in the checkout and the My Account area, the option **Please select** can now be set as the preselected option. For the ShopBuilder billing and shipping address widgets, you can set the preselection via the **Preselected salutation** setting in the widget settings. If you do not use ShopBuilder pages, you can set the presselection of the salutation via the **Preselected salutation** setting in the **Checkout and My Account** tab of the plentyShop LTS plugin settings. 
-
-### Changed
-
-- If an EU country can be selected as a delivery country in plentyShop, all EU countries are now available for the billing address. By implementing this change, plentyShop LTS complies with the Geo-Blocking Regulation (EU) No. 2018/302.
-
-### Fixed
-
-- In version 5.0.55 `aria-label` were added for the pagination on item category pages. This change resulted in an error that has now been fixed.
-- On order confirmation pages created via ShopBuilder, the estimated shipping date was not displayed in the correct format. This has been fixed.
-- The script for compiling SCSS files (`bundleSass.js`) now removes old files from the target folder. This adjustment fixes some import errors when deploying plugins.
-- Existing configuration previews of the plentyShop LTS assistent are now transferred to the new plugin set when copying a plugin set. Due to an error, no tiles for the assistent configurations were previously displayed in the plentyShop LTS assistent configuration overview.
-- Missing translation keys were added, which were only available in German and English.
-- For ShopBuilder contents of the type **Item search result**, the sorting option **Relevance** has been added to the **Item sorting** widget.
-
-### Changed templates
-
-- In Ceres 5.0.56 we made changes to template files which are relevant for theme developers. You can find the changed templates below. The link directs you to the effected changes in the corresponding files.
-- [resources/views/Category/Item/Partials/Pagination.twig](https://github.com/plentymarkets/plugin-ceres/pull/3340/files#diff-1b8d2c7ce7416f660f89d11ad8e368be614c2b98efc30526e74286c7f180c3b8)
-- [resources/views/Widgets/OrderConfirmation/OrderDataWidget.twig](https://github.com/plentymarkets/plugin-ceres/pull/3339/files#diff-82affb09026a21fd94995e057ae7214f6751cf84dfed718216f4760865567c33)
-
-
-## v5.0.55 (2022-09-22) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.54...5.0.55" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
+## v5.0.55 (2022-09-22) <a href="https://github.com/plentymarkets/plugin-ceres/compare/5.0.55...5.0.56" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
 
 ### TODO
 

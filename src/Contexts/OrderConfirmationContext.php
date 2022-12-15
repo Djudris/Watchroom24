@@ -53,9 +53,6 @@ class OrderConfirmationContext extends CategoryContext implements ContextInterfa
     /** @var string $orderConfirmationToken Required token for verification */
     public $orderConfirmationToken = '';
 
-    /** @var bool $isOrderValid Flag to indicate if the order confirmation link is still valid */
-    public $isOrderValid = false;
-
     /**
      * @inheritDoc
      */
@@ -66,7 +63,6 @@ class OrderConfirmationContext extends CategoryContext implements ContextInterfa
         $this->data = $params['data'];
         $this->totals = $this->data['totals'];
         $this->showAdditionalPaymentInformation = $params['showAdditionalPaymentInformation'];
-        $this->isOrderValid = $params['isOrderValid'];
 
         if ($this->data instanceof LocalizedOrder) {
             /** @var SessionStorageRepositoryContract $sessionStorage */
