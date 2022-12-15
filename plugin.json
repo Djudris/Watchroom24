@@ -10,6 +10,9 @@
     "shortDescription"  : {"de": "plentyShop LTS, das offizielle Onlineshop-Plugin von plentymarkets.","en": "plentyShop LTS, the plentymarkets online shop plugin."},
     "authorIcon"        : "icon_author_xs.png",
     "type"              : "theme",
+    "require"           : {
+        "IO": "~5.0.55"
+    },
     "platform": {
         "php": ">=7.3 <8.1"
     },
