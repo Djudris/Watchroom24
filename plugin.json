@@ -19,32 +19,6 @@
     "namespace"         : "Ceres",
     "serviceProvider"   : "Ceres\\Providers\\TemplateServiceProvider",
     "javaScriptFiles"   : [],
-    "runOnBuild"        : [
-        "Ceres\\Migrations\\WebshopSettingsMigration_0_0_1",
-        "Ceres\\Migrations\\ConfigPropertiesMigration_0_0_1",
-        "Ceres\\Migrations\\Migration_2018_07_06_001_RebuildShopBuilderHomepage",
-        "Ceres\\Wizard\\ShopWizard\\Migrations\\CreateShopWizardPreviewConfigTable",
-        "Ceres\\Wizard\\ShopWizard\\Migrations\\UpdateShopWizardPreviewTableWebstoreId",
-        "Ceres\\Migrations\\UpdateTranslationKeysMigration_0_0_1"
-    ],
-    "dataProviders"     :
-    [
-        {
-            "key":"Ceres\\Containers\\CeresItemListContainer1",
-            "name":"First item list",
-            "description":"Display a configurable list of items in your online store"
-        },
-        {
-            "key":"Ceres\\Containers\\CeresItemListContainer2",
-            "name":"Second item list",
-            "description":"Display a configurable list of items in your online store"
-        },
-        {
-            "key":"Ceres\\Containers\\CeresItemListContainer3",
-            "name":"Third item list",
-            "description":"Display a configurable list of items in your online store"
-        }
-    ],
     "containers"        :
     [
         {
@@ -52,20 +26,5 @@
             "name"          : "Script loader: Register/load JS",
             "description"   : "Register scripts, events and other JS related items."
         },
-        {
-            "key"           : "Script.AfterScriptsLoaded",
-            "name"          : "Script loader: After scripts loaded",
-            "description"   : "Load scripts, events and other JS related items, e.g. Vue components, after frameworks and scripts have been initialised."
-        },
-        {
-            "key"           : "PageDesign.AfterOpeningBodyTag",
-            "name"          : "Page Design: After opening HTML body tag",
-            "description"   : "Add content after the opening HTML body tag."
-        },
-        {
-            "key"           : "PageDesign.AfterOpeningHeadTag",
-            "name"          : "Page Design: After opening HTML head tag",
-            "description"   : "Add content after the opening HTML head tag."
-        }
     ]
 }
