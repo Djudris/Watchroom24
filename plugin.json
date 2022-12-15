@@ -1,5 +1,5 @@
 {
-    "version"           : "5.0.56",
+    "version"           : "1.0.0",
     "name"              : "KALMARS",
     "marketplaceName"   : {"de": "KALMARS + PLENTYSHOP LTS","en": "KALMARS + PLENTYSHOP LTS"},
     "description"       : "This is the official plentyShop LTS plugin developed by plentymarkets. plentyShop LTS is the default template plugin for plentymarkets online stores.",
@@ -9,7 +9,7 @@
     "price"             : 0.00,
     "shortDescription"  : {"de": "plentyShop LTS, das offizielle Onlineshop-Plugin von plentymarkets.","en": "plentyShop LTS, the plentymarkets online shop plugin."},
     "authorIcon"        : "icon_author_xs.png",
-    "type"              : "template",
+    "type"              : "theme",
     "require"           : {
         "IO": "~5.0.56"
     },
