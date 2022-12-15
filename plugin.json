@@ -1,6 +1,6 @@
 {
     "version"           : "5.0.56",
-    "name"              : "KM",
+    "name"              : "KALMARS",
     "marketplaceName"   : {"de": "plentyShop LTS","en": "plentyShop LTS"},
     "description"       : "This is the official plentyShop LTS plugin developed by plentymarkets. plentyShop LTS is the default template plugin for plentymarkets online stores.",
     "author"            : "KM",
