@@ -2,10 +2,6 @@
   "name": "KALMARS",
   "license": "AGPL-3.0",
   "version": "5.0.55",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/plentymarkets/plugin-ceres.git"
-  },
   "scripts": {
     "start": "webpack --watch --progress",
     "build": "npm run build:prod && npm run build:dev",
