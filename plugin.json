@@ -1,24 +1,48 @@
 {
-    "version"          : "5.0.55",
-    "license"          : "AGPL-3.0",
-    "name"             : "KALMARS",
-    "marketplaceName"  : {"de":"Kalmars","en":"Kalmars"},
-    "pluginIcon"       : "icon_plugin_xs.png",
-    "authorIcon"       : "icon_author_xs.png",
-    "email"            : "info@kalmars.lv",
-    "description"      : "A Kalmars theme for Ceres",
-    "shortDescription" : { "de": "Ein Kalmars-Theme für Ceres.", "en": "A Kalmars theme for Ceres." },
-    "namespace"        : "Kalmars",
-    "author"           : "Kalmars",
-    "keywords"         : ["plentymarkets", "plugins", "layout", "theme", "ceres"],
-    "price"            : 0,
-    "categories"       : [3518],
-    "type"             : "theme",
-    "require"          : {
-        "Ceres": ">= 5.0.55"
-    },
-    "platform": {
-        "php": ">=7.3 <8.1"
-    },
-    "serviceProvider" : "Kalmars\\Providers\\LegendServiceProvider"
+  "version": "5.0.55",
+  "license": "AGPL-3.0",
+  "name": "KALMARS",
+  "marketplaceName": {
+    "de": "KALMARS",
+    "en": "KALMARS"
+  },
+  "pluginIcon": "icon_plugin_xs.png",
+  "authorIcon": "icon_author_xs.png",
+  "email": "info@kalmars.lv",
+  "description": "A Kalmars theme for Ceres",
+  "shortDescription": {
+    "de": "Ein Kalmars-Theme für Ceres.",
+    "en": "A Kalmars theme for Ceres."
+  },
+  "namespace": "KALMARS",
+  "author": "KALMARS",
+  "keywords": [
+    "plentymarkets",
+    "plugins",
+    "layout",
+    "theme",
+    "ceres"
+  ],
+  "price": 0,
+  "categories": [
+    3518
+  ],
+  "type": "theme",
+  "require": {
+    "Ceres": ">= 5.0.55"
+  },
+  "platform": {
+    "php": ">=7.3 <8.1"
+  },
+  "serviceProvider": "KALMARS\\Providers\\LegendServiceProvider",
+  "containers": [
+    {
+      "key": "SingleItem.FeedbackContainerTab",
+      "name": "Single item: Container tab for customer feedback",
+      "description": "Add customer feedback in the single item view tab."
+    }
+  ],
+  "runOnBuild": [
+    "Legend\\Migrations\\CreateKeyValueTable_0_0_1"
+  ]
 }

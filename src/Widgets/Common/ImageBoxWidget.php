@@ -1,6 +1,6 @@
 <?php
 
-namespace Ceres\Widgets\Common;
+namespace KALMARS\Widgets\Common;
 
 use Ceres\Widgets\Helper\BaseWidget;
 use Ceres\Widgets\Helper\Factories\Settings\ValueListFactory;
@@ -11,10 +11,7 @@ use Ceres\Widgets\Helper\WidgetTypes;
 
 class ImageBoxWidget extends BaseWidget
 {
-    /** @inheritDoc */
-    protected $template = 'Ceres::Widgets.Common.ImageBoxWidget';
-
-    /** @const string[] IMAGE_EXTENSION */
+    protected $template = 'KALMARS::Widgets.Common.ImageBoxWidget';
     const IMAGE_EXTENSIONS = [
         'jpg',
         'jpeg',
@@ -23,58 +20,27 @@ class ImageBoxWidget extends BaseWidget
         'svg',
         'apng'
     ];
-
-    /** @const string[] MODERN_IMAGE_EXTENSIONS */
     const MODERN_IMAGE_EXTENSIONS = [
         'webp'
     ];
 
-    /**
-     * @inheritDoc
-     */
     public function getData()
     {
-        return WidgetDataFactory::make('Ceres::ImageBoxWidget')
+        return WidgetDataFactory::make('KALMARS::ImageBoxWidget')
             ->withLabel('Widget.imageBoxLabel')
             ->withPreviewImageUrl('/images/widgets/image-box.svg')
             ->withType(WidgetTypes::STATIC)
-            ->withCategory(WidgetCategories::IMAGE)
+            ->withCategory("KALMARS")
             ->withPosition(600)
-            ->withSearchKeyWords([
-                "foto", "picture", "bild", "image", "einzelbild"
-            ])
             ->toArray();
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getSettings()
     {
         /** @var WidgetSettingsFactory $settings */
         $settings = pluginApp(WidgetSettingsFactory::class);
 
         $settings->createCustomClass();
-        $settings->createAppearance();
-
-        $settings->createSelect('aspectRatio')
-            ->withDefaultValue('auto')
-            ->withName('Widget.imageBoxAspectRatioLabel')
-            ->withTooltip('Widget.imageBoxAspectRatioTooltip')
-            ->withCondition("fullHeight !== true")
-            ->withListBoxValues(
-                ValueListFactory::make()
-                    ->addEntry('retain', 'Widget.imageBoxRetainAspectRatio')
-                    ->addEntry('auto', 'Widget.imageBoxAspectRatioAuto')
-                    ->addEntry('3-1', 'Widget.imageBoxAspectRatioThreeToOne')
-                    ->addEntry('2-1', 'Widget.imageBoxAspectRatioTwoToOne')
-                    ->addEntry('3-2', 'Widget.imageBoxAspectRatioThreeToTwo')
-                    ->addEntry('1-1', 'Widget.imageBoxAspectRatioOneToOne')
-                    ->addEntry('2-3', 'Widget.imageBoxAspectRatioTwoToThree')
-                    ->addEntry('1-2', 'Widget.imageBoxAspectRatioOneToTwo')
-                    ->addEntry('1-3', 'Widget.imageBoxAspectRatioOneToThree')
-                    ->toArray()
-            );
 
         $settings->createSelect('style')
             ->withDefaultValue('block-caption')
@@ -90,7 +56,7 @@ class ImageBoxWidget extends BaseWidget
             );
 
         $settings->createSelect('imageSize')
-            ->withCondition("aspectRatio !== 'retain' && fullHeight !== true")
+            ->withCondition("fullHeight !== true")
             ->withDefaultValue('cover')
             ->withName('Widget.imageBoxImageSizeLabel')
             ->withTooltip('Widget.imageBoxImageSizeTooltip')
@@ -127,9 +93,9 @@ class ImageBoxWidget extends BaseWidget
             ->withTooltip('Widget.imageBoxFullHeightTooltip');
 
         $settings->createCheckbox('lazyLoading')
+            ->withCondition("!preloadImage")
             ->withName('Widget.imageBoxLazyLoadingName')
             ->withTooltip('Widget.imageBoxLazyLoadingTooltip')
-            ->withCondition("!preloadImage")
             ->withDefaultValue(true);
 
         $settings->createCheckbox('preloadImage')
@@ -147,9 +113,6 @@ class ImageBoxWidget extends BaseWidget
         return $settings->toArray();
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getTemplateData($widgetSettings, $isPreview)
     {
         $urlType = '';

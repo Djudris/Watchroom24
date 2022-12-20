@@ -1,6 +1,6 @@
 <?php
 
-namespace Ceres\Widgets\Common;
+namespace KALMARS\Widgets\Common;
 
 use Ceres\Widgets\Helper\BaseWidget;
 use Ceres\Widgets\Helper\Factories\Settings\ValueListFactory;
@@ -11,29 +11,19 @@ use Ceres\Widgets\Helper\WidgetTypes;
 
 class LiveShoppingWidget extends BaseWidget
 {
-    /** @inheritDoc */
-    protected $template = "Ceres::Widgets.Common.LiveShoppingWidget";
+    protected $template = "KALMARS::Widgets.Common.LiveShoppingWidget";
 
-    /**
-     * @inheritDoc
-     */
     public function getData()
     {
-        return WidgetDataFactory::make("Ceres::LiveShoppingWidget")
+        return WidgetDataFactory::make("KALMARS::LiveShoppingWidget")
             ->withLabel("Widget.liveShoppingLabel")
             ->withPreviewImageUrl("/images/widgets/live-shopping.svg")
             ->withType(WidgetTypes::STATIC)
-            ->withCategory(WidgetCategories::ITEM)
+            ->withCategory("KALMARS")
             ->withPosition(800)
-            ->withSearchKeyWords([
-                "live", "shopping", "liveshopping", "angebot", "angebote", "sell"
-            ])
             ->toArray();
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getSettings()
     {
         /** @var WidgetSettingsFactory $settings */
@@ -114,9 +104,6 @@ class LiveShoppingWidget extends BaseWidget
         return $settings->toArray();
     }
 
-    /**
-     * @inheritDoc
-     */
     protected function getTemplateData($widgetSettings, $isPreview)
     {
         return [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kalmars\Providers;
+namespace KALMARS\Providers;
 
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
@@ -12,17 +12,17 @@ use IO\Helper\ComponentContainer;
 use Plenty\Plugin\ConfigRepository;
 use Plenty\Modules\ShopBuilder\Contracts\ContentWidgetRepositoryContract;
 
-use Kalmars\Widgets\WidgetCollection;
+use KALMARS\Widgets\WidgetCollection;
 
-use Kalmars\Contracts\KeyValueRepositoryContract;
-use Kalmars\Repositories\KeyValueRepository;
+use KALMARS\Contracts\KeyValueRepositoryContract;
+use KALMARS\Repositories\KeyValueRepository;
 
-use Kalmars\Extensions\TwigServiceProvider;
-use Kalmars\Contexts\KalmarsSingleItemContext;
-use Kalmars\Services\WebhookService;
+use KALMARS\Extensions\TwigServiceProvider;
+use KALMARS\Contexts\KALMARSSingleItemContext;
+use KALMARS\Services\WebhookService;
 
 
-class KalmarsServiceProvider extends ServiceProvider
+class KALMARSServiceProvider extends ServiceProvider
 {
     const PRIORITY = 999;
 
@@ -49,8 +49,8 @@ class KalmarsServiceProvider extends ServiceProvider
         }
 
         $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
-            $container->addStyleTemplate('Kalmars::Stylesheet');
-            $container->addScriptTemplate('Kalmars::Script');
+            $container->addStyleTemplate('KALMARS::Stylesheet');
+            $container->addScriptTemplate('KALMARS::Script');
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.init.templates', function (Partial $partial)
@@ -61,67 +61,67 @@ class KalmarsServiceProvider extends ServiceProvider
             $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
             $partial->set('page-metadata', 'Ceres::PageDesign.Partials.PageMetadata');
 
-            $partial->set('header', 'Kalmars::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'Kalmars::PageDesign.PageDesign');
-            $partial->set('footer', 'Kalmars::PageDesign.Partials.Footer');
-            $partial->set('page-metadata', 'Kalmars::PageDesign.Partials.PageMetadata');
+            $partial->set('header', 'KALMARS::PageDesign.Partials.Header.Header');
+            $partial->set('page-design', 'KALMARS::PageDesign.PageDesign');
+            $partial->set('footer', 'KALMARS::PageDesign.Partials.Footer');
+            $partial->set('page-metadata', 'KALMARS::PageDesign.Partials.PageMetadata');
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Item.SingleItemWrapper');
+            $container->setTemplate('KALMARS::Item.SingleItemWrapper');
         }, self::PRIORITY);
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $container)
         {
-            $container->setContext( KalmarsSingleItemContext::class );
+            $container->setContext( KALMARSSingleItemContext::class );
             return false;
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.tpl.category.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
+            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
+            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.tags', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
+            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
         }, self::PRIORITY);
 
         /* Heders remove only */
         $dispatcher->listen('IO.tpl.contact', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Customer.Contact');
+            $container->setTemplate('KALMARS::Customer.Contact');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.wish-list', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::WishList.WishListView');
+            $container->setTemplate('KALMARS::WishList.WishListView');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.basket', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::Basket.Basket');
+            $container->setTemplate('KALMARS::Basket.Basket');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-form', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::StaticPages.CancellationForm');
+            $container->setTemplate('KALMARS::StaticPages.CancellationForm');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-rights', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::StaticPages.CancellationRights');
+            $container->setTemplate('KALMARS::StaticPages.CancellationRights');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.legal-disclosure', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::StaticPages.LegalDisclosure');
+            $container->setTemplate('KALMARS::StaticPages.LegalDisclosure');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.privacy-policy', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::StaticPages.PrivacyPolicy');
+            $container->setTemplate('KALMARS::StaticPages.PrivacyPolicy');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.terms-conditions', function (TemplateContainer $container)
         {
-            $container->setTemplate('Kalmars::StaticPages.TermsAndConditions');
+            $container->setTemplate('KALMARS::StaticPages.TermsAndConditions');
         }, self::PRIORITY);
     }
 }
