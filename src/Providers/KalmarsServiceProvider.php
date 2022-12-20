@@ -12,14 +12,14 @@ use IO\Helper\ComponentContainer;
 use Plenty\Plugin\ConfigRepository;
 use Plenty\Modules\ShopBuilder\Contracts\ContentWidgetRepositoryContract;
 
-use Legend\Widgets\WidgetCollection;
+use Kalmars\Widgets\WidgetCollection;
 
-use Legend\Contracts\KeyValueRepositoryContract;
-use Legend\Repositories\KeyValueRepository;
+use Kalmars\Contracts\KeyValueRepositoryContract;
+use Kalmars\Repositories\KeyValueRepository;
 
-use Legend\Extensions\TwigServiceProvider;
-use Legend\Contexts\LegendSingleItemContext;
-use Legend\Services\WebhookService;
+use Kalmars\Extensions\TwigServiceProvider;
+use Kalmars\Contexts\KalmarsSingleItemContext;
+use Kalmars\Services\WebhookService;
 
 
 class KalmarsServiceProvider extends ServiceProvider
@@ -61,67 +61,67 @@ class KalmarsServiceProvider extends ServiceProvider
             $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
             $partial->set('page-metadata', 'Ceres::PageDesign.Partials.PageMetadata');
 
-            $partial->set('header', 'Legend::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'Legend::PageDesign.PageDesign');
-            $partial->set('footer', 'Legend::PageDesign.Partials.Footer');
-            $partial->set('page-metadata', 'Legend::PageDesign.Partials.PageMetadata');
+            $partial->set('header', 'Kalmars::PageDesign.Partials.Header.Header');
+            $partial->set('page-design', 'Kalmars::PageDesign.PageDesign');
+            $partial->set('footer', 'Kalmars::PageDesign.Partials.Footer');
+            $partial->set('page-metadata', 'Kalmars::PageDesign.Partials.PageMetadata');
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Item.SingleItemWrapper');
+            $container->setTemplate('Kalmars::Item.SingleItemWrapper');
         }, self::PRIORITY);
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $container)
         {
-            $container->setContext( LegendSingleItemContext::class );
+            $container->setContext( KalmarsSingleItemContext::class );
             return false;
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.tpl.category.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Category.Item.CategoryItem');
+            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Category.Item.CategoryItem');
+            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.tags', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Category.Item.CategoryItem');
+            $container->setTemplate('Kalmars::Category.Item.CategoryItem');
         }, self::PRIORITY);
 
         /* Heders remove only */
         $dispatcher->listen('IO.tpl.contact', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Customer.Contact');
+            $container->setTemplate('Kalmars::Customer.Contact');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.wish-list', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::WishList.WishListView');
+            $container->setTemplate('Kalmars::WishList.WishListView');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.basket', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::Basket.Basket');
+            $container->setTemplate('Kalmars::Basket.Basket');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-form', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::StaticPages.CancellationForm');
+            $container->setTemplate('Kalmars::StaticPages.CancellationForm');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-rights', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::StaticPages.CancellationRights');
+            $container->setTemplate('Kalmars::StaticPages.CancellationRights');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.legal-disclosure', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::StaticPages.LegalDisclosure');
+            $container->setTemplate('Kalmars::StaticPages.LegalDisclosure');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.privacy-policy', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::StaticPages.PrivacyPolicy');
+            $container->setTemplate('Kalmars::StaticPages.PrivacyPolicy');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.terms-conditions', function (TemplateContainer $container)
         {
-            $container->setTemplate('Legend::StaticPages.TermsAndConditions');
+            $container->setTemplate('Kalmars::StaticPages.TermsAndConditions');
         }, self::PRIORITY);
     }
 }
