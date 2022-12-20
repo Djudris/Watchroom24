@@ -20,7 +20,7 @@
     "platform": {
         "php": ">=7.3 <8.1"
     },
-    "serviceProvider"   : "Ceres\\Providers\\TemplateServiceProvider",
+    "serviceProvider" : "Kalmars\\Providers\\LegendServiceProvider",
     "javaScriptFiles"   : [],
     "runOnBuild"        : [
         "Ceres\\Migrations\\WebshopSettingsMigration_0_0_1",
