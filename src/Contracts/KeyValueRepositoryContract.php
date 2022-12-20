@@ -1,12 +1,12 @@
 <?php
 
-namespace Legend\Contracts;
+namespace KALMARS\Contracts;
 
-use Legend\Models\KeyValue;
+use KALMARS\Models\KeyValue;
 
 /**
  * Class KeyValueRepositoryContract
- * @package Legend\Contracts
+ * @package KALMARS\Contracts
  */
 interface KeyValueRepositoryContract
 {
