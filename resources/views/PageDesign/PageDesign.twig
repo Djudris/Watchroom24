@@ -251,9 +251,6 @@
 {% if ceresConfig.log.performanceLevel  == 'development' %}
     {% set minSuffix = '' %}
 {% endif %}
-<script>
-  console.log('Test123');
-</script>
 <!-- SSR:entry({{ ssr_entry('Ceres', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
 <script src="{{ plugin_path('Ceres') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
