@@ -13,7 +13,7 @@
     "phone"             : "+49 561 98 681 100",
     "categories"        : ["3885"],
     "keywords"          : ["plentymarkets", "plugins", "layout", "template", "ceres", "plentyshop", "webshop"],
-    "type"              : "template",
+    "type"              : "theme",
     "require"           : {
         "IO": "~5.0.55"
     },
