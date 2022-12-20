@@ -1,26 +1,25 @@
 {
-    "version"           : "5.0.55",
-    "name"              : "KALMARS",
-    "marketplaceName"   : {"de": "Kalmars","en": "Kalmars"},
-    "description"       : "This is the official plentyShop LTS plugin developed by plentymarkets. plentyShop LTS is the default template plugin for plentymarkets online stores.",
-    "author"            : "plentysystems AG",
-    "license"           : "AGPL-3.0",
-    "pluginIcon"        : "icon_plugin_xs.png",
-    "price"             : 0.00,
-    "shortDescription"  : {"de": "plentyShop LTS, das offizielle Onlineshop-Plugin von plentymarkets.","en": "plentyShop LTS, the plentymarkets online shop plugin."},
-    "authorIcon"        : "icon_author_xs.png",
-    "email"             : "sales@plentymarkets.com",
-    "phone"             : "+49 561 98 681 100",
-    "categories"        : ["3885"],
-    "keywords"          : ["plentymarkets", "plugins", "layout", "template", "ceres", "plentyshop", "webshop"],
-    "type"              : "theme",
-    "require"           : {
-        "IO": "~5.0.55"
+    "version"          : "5.0.55",
+    "license"          : "AGPL-3.0",
+    "name"             : "KALMARS",
+    "marketplaceName"  : {"de":"Kalmars","en":"Kalmars"},
+    "pluginIcon"       : "icon_plugin_xs.png",
+    "authorIcon"       : "icon_author_xs.png",
+    "email"            : "info@plentylions.de",
+    "description"      : "A Legend theme for Ceres. Development started with 2.13.0 Ceres.",
+    "shortDescription" : { "de": "Ein Kalmars-Theme für Ceres.", "en": "A Kalmars theme for Ceres." },
+    "namespace"        : "Kalmars",
+    "author"           : "Kalmars",
+    "keywords"         : ["plentymarkets", "plugins", "layout", "theme", "ceres"],
+    "price"            : 0,
+    "categories"       : [3518],
+    "type"             : "theme",
+    "require"          : {
+        "Ceres": ">= 5.0.55"
     },
     "platform": {
         "php": ">=7.3 <8.1"
     },
-    "namespace"         : "Ceres",
     "serviceProvider"   : "Ceres\\Providers\\TemplateServiceProvider",
     "javaScriptFiles"   : [],
     "runOnBuild"        : [
