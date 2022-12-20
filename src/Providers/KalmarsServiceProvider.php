@@ -22,13 +22,12 @@ use Legend\Contexts\LegendSingleItemContext;
 use Legend\Services\WebhookService;
 
 
-class LegendServiceProvider extends ServiceProvider
+class KalmarsServiceProvider extends ServiceProvider
 {
-    const PRIORITY = 99;
+    const PRIORITY = 999;
 
     public function register()
     {
-        $this->getApplication()->register(LegendRouteServiceProvider::class);
         $this->getApplication()->bind(KeyValueRepositoryContract::class, KeyValueRepository::class);
     }
 
@@ -50,8 +49,8 @@ class LegendServiceProvider extends ServiceProvider
         }
 
         $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
-            $container->addStyleTemplate('Legend::Stylesheet');
-            $container->addScriptTemplate('Legend::Script');
+            $container->addStyleTemplate('Kalmars::Stylesheet');
+            $container->addScriptTemplate('Kalmars::Script');
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.init.templates', function (Partial $partial)
