@@ -63,7 +63,7 @@ class LegendServiceProvider extends ServiceProvider
             $partial->set('page-metadata', 'Ceres::PageDesign.Partials.PageMetadata');
 
             $partial->set('header', 'Legend::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'Kalmars::PageDesign.PageDesign');
+            $partial->set('page-design', 'Legend::PageDesign.PageDesign');
             $partial->set('footer', 'Legend::PageDesign.Partials.Footer');
             $partial->set('page-metadata', 'Legend::PageDesign.Partials.PageMetadata');
         }, self::PRIORITY);
