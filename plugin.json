@@ -34,7 +34,7 @@
   "platform": {
     "php": ">=7.3 <8.1"
   },
-  "serviceProvider": "KALMARS\\Providers\\LegendServiceProvider",
+  "serviceProvider": "KALMARS\\Providers\\KALMARSServiceProvider",
   "containers": [
     {
       "key": "SingleItem.FeedbackContainerTab",
@@ -43,6 +43,6 @@
     }
   ],
   "runOnBuild": [
-    "Legend\\Migrations\\CreateKeyValueTable_0_0_1"
+    "KALMARS\\Migrations\\CreateKeyValueTable_0_0_1"
   ]
 }
