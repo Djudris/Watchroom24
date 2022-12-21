@@ -59,15 +59,15 @@ class KALMARSServiceProvider extends ServiceProvider
             $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
             $partial->set('page-metadata', 'Ceres::PageDesign.Partials.PageMetadata');
 
-            $partial->set('header', 'KALMARS::PageDesign.Partials.Header.Header');
+            $partial->set('header', 'Legend::PageDesign.Partials.Header.Header');
             $partial->set('page-design', 'KALMARS::PageDesign.PageDesign');
-            $partial->set('footer', 'KALMARS::PageDesign.Partials.Footer');
-            $partial->set('page-metadata', 'KALMARS::PageDesign.Partials.PageMetadata');
+            $partial->set('footer', 'Legend::PageDesign.Partials.Footer');
+            $partial->set('page-metadata', 'Legend::PageDesign.Partials.PageMetadata');
         }, self::PRIORITY);
 
         $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Item.SingleItemWrapper');
+            $container->setTemplate('Legend::Item.SingleItemWrapper');
         }, self::PRIORITY);
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $container)
         {
@@ -77,49 +77,49 @@ class KALMARSServiceProvider extends ServiceProvider
 
         $dispatcher->listen('IO.tpl.category.item', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
+            $container->setTemplate('Legend::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
+            $container->setTemplate('Legend::Category.Item.CategoryItem');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.tags', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Category.Item.CategoryItem');
+            $container->setTemplate('Legend::Category.Item.CategoryItem');
         }, self::PRIORITY);
 
         /* Heders remove only */
         $dispatcher->listen('IO.tpl.contact', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Customer.Contact');
+            $container->setTemplate('Legend::Customer.Contact');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.wish-list', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::WishList.WishListView');
+            $container->setTemplate('Legend::WishList.WishListView');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.basket', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::Basket.Basket');
+            $container->setTemplate('Legend::Basket.Basket');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-form', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::StaticPages.CancellationForm');
+            $container->setTemplate('Legend::StaticPages.CancellationForm');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.cancellation-rights', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::StaticPages.CancellationRights');
+            $container->setTemplate('Legend::StaticPages.CancellationRights');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.legal-disclosure', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::StaticPages.LegalDisclosure');
+            $container->setTemplate('Legend::StaticPages.LegalDisclosure');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.privacy-policy', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::StaticPages.PrivacyPolicy');
+            $container->setTemplate('Legend::StaticPages.PrivacyPolicy');
         }, self::PRIORITY);
         $dispatcher->listen('IO.tpl.terms-conditions', function (TemplateContainer $container)
         {
-            $container->setTemplate('KALMARS::StaticPages.TermsAndConditions');
+            $container->setTemplate('Legend::StaticPages.TermsAndConditions');
         }, self::PRIORITY);
     }
 }
