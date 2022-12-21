@@ -32,6 +32,9 @@
         {% embed getPartial('page-metadata') %}{% endembed %}
     {% endblock %}
 
+    {% include getPartial('head') %}
+
+
     {% for styleTemplate in get_additional_styles() %}
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
     {% endfor %}
@@ -42,7 +45,6 @@
     {% if isItem %}
         {{ LayoutContainer.show("Ceres::SingleItem.Styles") }}
     {% endif %}
-    {% include getPartial('head') %}
 
 </head>
 
@@ -286,7 +288,7 @@
 
 <!-- SSR:on() -->
 {#<script>#}
-    // window.createApp("#vue-app");
+{#    window.createApp("#vue-app");#}
 {#</script>#}
 <!-- /SSR -->
 
