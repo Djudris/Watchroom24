@@ -235,6 +235,7 @@
 <script>
     window.App = JSON.parse(document.getElementById("app-data").innerText);
     window.__loadPluginChunk = function(source) {
+        console.log(source);
         return source += "?v={{ buildHash }}";
     };
 </script>
