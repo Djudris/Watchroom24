@@ -22,6 +22,7 @@ class KALMARSServiceProvider extends ServiceProvider
     {
         $dispatcher->listen('IO.init.templates', function (Partial $partial)
         {
+            $partial->set('head', 'KALMARS::PageDesign.Partials.Head');
             $partial->set('page-design', 'KALMARS::PageDesign.PageDesign');
         }, self::PRIORITY);
     }

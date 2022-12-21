@@ -17,7 +17,8 @@ module.exports = env =>
         externals: {
             jquery: 'jQuery',
             vue: 'Vue',
-            vuex: 'Vuex'
+            vuex: 'Vuex',
+            popper: 'Popper'
         },
         resolve: {
             alias: {
