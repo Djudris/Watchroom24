@@ -4,7 +4,7 @@ const browserDetect = require("detect-browser");
 const NotificationService = require("./services/NotificationService");
 const AutoFocusService = require("./services/AutoFocusService");
 
-import Vue from "vue";
+// import Vue from "vue";
 import { getStyle } from "./helper/dom";
 import { detectPassiveEvents } from "./helper/featureDetect";
 import HeaderScroller from "./helper/HeaderScroller";

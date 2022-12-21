@@ -3,15 +3,12 @@ import Vue from "vue";
 import Vuex from "vuex";
 import NotificationService from "./app/services/NotificationService";
 import TranslationService from "./app/services/TranslationService";
-import "bootstrap";
-import "owl.carousel";
 import { createApp, beforeCreate } from "./app";
 import "custom-event-polyfill";
 import { initClientListeners, initClientStore, createStore } from "./app/store";
 import { initListener } from "./app/services/ApiService";
 import { mount } from "./mount";
 import "./app/jQuery";
-console.log('TEST')
 Vue.prototype.$mount = mount;
 
 // defines if the render location is the client
