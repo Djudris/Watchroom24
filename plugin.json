@@ -34,7 +34,7 @@
   "platform": {
     "php": ">=7.3 <8.1"
   },
-  "serviceProvider": "KALMARS\\Providers\\KALMARSServiceProvider",
+  "serviceProvider": "KALMARS\\Providers\\KalmarsServiceProvider",
   "containers": [
     {
       "key": "SingleItem.FeedbackContainerTab",
