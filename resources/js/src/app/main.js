@@ -147,7 +147,7 @@ function CeresMain()
                     $(".back-to-top-center").fadeOut(duration);
                 }
             }
-        }, detectPassiveEvents() ? { passive: true } : false );
+        }, detectPassiveEvents() ? { passive: true } : false);
 
         window.addEventListener("resize", function()
         {
@@ -192,8 +192,6 @@ function CeresMain()
     });
 }
 
-window.CeresMain = new CeresMain();
-window.CeresNotification = NotificationService;
 
 const showShopNotification = function(event)
 {
@@ -223,39 +221,6 @@ const showShopNotification = function(event)
     }
 };
 
-document.addEventListener("showShopNotification", showShopNotification);
-
-// fixate the header elements
-new HeaderScroller();
-
-$(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function(event, eventData, widgetElement)
-{
-    const parent = widgetElement[1];
-
-    const parentComponent = getContainingComponent(parent);
-
-    const compiled = Vue.compile(widgetElement[0].outerHTML, { delimiters: ["${", "}"] } );
-    const component = new Vue({
-        store: window.ceresStore,
-        render: compiled.render,
-        staticRenderFns: compiled.staticRenderFns,
-        parent: parentComponent
-    });
-
-    component.$mount( widgetElement[0] );
-    $(component.$el).find("*").each(function(index, elem)
-    {
-        $(elem).on("click", function(event)
-        {
-            event.preventDefault();
-        });
-    });
-
-    $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function()
-    {
-        window.dispatchEvent(new Event("resize"));
-    });
-});
 
 function fixPopperZIndexes()
 {
@@ -275,3 +240,44 @@ function fixPopperZIndexes()
         }
     });
 }
+
+window.onload = (event) =>
+{
+    window.CeresMain = new CeresMain();
+    window.CeresNotification = NotificationService;
+
+    document.addEventListener("showShopNotification", showShopNotification);
+
+    // fixate the header elements
+    new HeaderScroller();
+
+    $(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function(event, eventData, widgetElement)
+    {
+        const parent = widgetElement[1];
+
+        const parentComponent = getContainingComponent(parent);
+
+        const compiled = Vue.compile(widgetElement[0].outerHTML, { delimiters: ["${", "}"] });
+        const component = new Vue({
+            store: window.ceresStore,
+            render: compiled.render,
+            staticRenderFns: compiled.staticRenderFns,
+            parent: parentComponent
+        });
+
+        component.$mount(widgetElement[0]);
+        $(component.$el).find("*").each(function(index, elem)
+        {
+            $(elem).on("click", function(event)
+            {
+                event.preventDefault();
+            });
+        });
+
+        $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function()
+        {
+            window.dispatchEvent(new Event("resize"));
+        });
+    });
+};
+

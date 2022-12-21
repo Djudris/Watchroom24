@@ -9,13 +9,14 @@ import { initClientListeners, initClientStore, createStore } from "./app/store";
 import { initListener } from "./app/services/ApiService";
 import { mount } from "./mount";
 import "./app/jQuery";
+import "./app/main";
 
 window.onload = (event) =>
 {
 
     Vue.prototype.$mount = mount;
 
-// defines if the render location is the client
+    // defines if the render location is the client
     App.isSSR = false;
     App.isSSREnabled = App.config.log.performanceSsr;
 
@@ -50,8 +51,30 @@ window.onload = (event) =>
     window.ceresTranslate = TranslationService.translate;
     window.vueEventHub = new Vue();
     window.ceresStore = store;
+    window.vueEventHub = new Vue();
+    if (App.config.log.checkSyntax)
+    {
+        const rootElement = document.getElementById("vue-app");
 
-    import "./app/main";
+        rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
+        window.vueApp = new Vue({
+            store: window.ceresStore
+        });
+        vueApp.$mount( rootElement.cloneNode(true) );
+        if (vueApp.$el.id === "vue-app")
+        {
+            document.body.replaceChild( vueApp.$el, rootElement );
+        }
+    }
+    else
+    {
+        // eslint-disable-next-line no-unused-vars
+        window.vueApp = new Vue({
+            el: "#vue-app",
+            store: window.ceresStore
+        });
+    }
     window.createApp("#vue-app");
 
 };
+
