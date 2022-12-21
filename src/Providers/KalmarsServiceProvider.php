@@ -12,8 +12,6 @@ use IO\Helper\ComponentContainer;
 use Plenty\Plugin\ConfigRepository;
 use Plenty\Modules\ShopBuilder\Contracts\ContentWidgetRepositoryContract;
 
-use KALMARS\Widgets\WidgetCollection;
-
 use KALMARS\Contracts\KeyValueRepositoryContract;
 use KALMARS\Repositories\KeyValueRepository;
 
