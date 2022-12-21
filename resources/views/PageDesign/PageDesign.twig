@@ -253,7 +253,7 @@
 {% endif %}
 <!-- SSR:entry({{ ssr_entry('KALMARS', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
-{#<script src="{{ plugin_path('KALMARS') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>#}
+<script src="{{ plugin_path('KALMARS') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
 <script src="{{ plugin_path('KALMARS') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
