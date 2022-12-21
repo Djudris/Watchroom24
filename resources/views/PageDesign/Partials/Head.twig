@@ -81,11 +81,10 @@
 
 {% set defaultCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".css?v=" ~ buildHash %}
 {% set defaultSCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".scss?v=" ~ buildHash %}
+<link rel="preload" as="style" href="{{ defaultCSS }}">
 
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
-    <link rel="preload" as="style" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
-{% else %}
-    <link rel="preload" as="style" href="{{ defaultCSS }}">
+    <link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
 {% endif %}
 
 
