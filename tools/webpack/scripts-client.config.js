@@ -15,10 +15,10 @@ module.exports = env =>
             path: path.resolve(__dirname, "..", "..", "resources/js/dist/"),
         },
         externals: {
-            jquery: 'jQuery',
-            vue: 'Vue',
-            vuex: 'Vuex',
-            popper: 'Popper'
+            jquery: "jQuery",
+            vue: "Vue",
+            vuex: "Vuex",
+            popper: "popper"
         },
         resolve: {
             alias: {
