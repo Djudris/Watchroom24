@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="{{ plugin_path('Legend') }}/css/legend.css?v={{ buildHash }}">
+
+{% if config('Legend.header.custom_css') | trim is not empty %}
+    <style>
+        {{ config('Legend.header.custom_css') | raw }}
+    </style>
+{% endif %}
+
+{{ config('Legend.header.custom_html') | raw }}
+
+{{ component( "Legend::Basket.Components.BasketListItem" ) }}
+{{ component( "Legend::Item.Components.QuantityInput" ) }}
+{{ component( "Legend::Item.Components.AddToWishList" ) }}
+{{ component( "Legend::Basket.Components.AddToBasket" ) }}
+{{ component( "Legend::ItemList.Components.AddToWishList" ) }}
+{{ component( "Legend::ItemList.Components.CategoryItem" ) }}
+{{ component( "Legend::ItemList.Components.ItemSearch" ) }}
+{{ component( "Legend::Customer.Components.UserLoginHandler" ) }}
+{{ component( "Legend::LiveShopping.Components.LiveShoppingDetails" ) }}
+{{ component( "Legend::LiveShopping.Components.LiveShoppingItem" ) }}
+{{ component( "Legend::PageDesign.Components.MobileNavigation" ) }}
+{{ component( "Legend::WishList.Components.WishListCount" ) }}
+
+{% if services.template.getCurrentTemplate() in ["tpl.category.item", "tpl.search", "tpl.tags"] %}
+    {{ component( "Legend::ItemList.Components.Filter.ItemFilter" ) }}
+    {{ component( "Legend::ItemList.Components.Filter.ItemFilterList" ) }}
+    {{ component( "Legend::ItemList.Components.Filter.ItemFilterTagList" ) }}
+{% endif %}
+
+{% if services.template.isItem() == "1" %}
+    {{ component( "Legend::Item.Components.ItemPrice" ) }}
+    {{ component( "Legend::Item.Components.VariationSelect" ) }}
+    {{ component( "Legend::Item.Components.SingleItem" ) }}
+
+    {% if isItemSet %}
+        {{ component( "Legend::Item.Components.SetQuantityInput" ) }}
+        {{ component( "Legend::Item.Components.SetPrice" ) }}
+
+        <div id="item-set-desc-modal-wrapper">
+            <div class="modal fade item-set-desc-modal" id="login" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title h3">{{ trans("Ceres::Template.singleItemDescription") }}</div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

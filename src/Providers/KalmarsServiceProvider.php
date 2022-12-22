@@ -20,6 +20,11 @@ class KALMARSServiceProvider extends ServiceProvider
     const PRIORITY = 999;
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
+        $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
+            $container->addStyleTemplate('KALMARS::Stylesheet');
+            $container->addScriptTemplate('KALMARS::Script');
+        }, self::PRIORITY);
+
         $dispatcher->listen('IO.init.templates', function (Partial $partial)
         {
             $partial->set('head', 'KALMARS::PageDesign.Partials.Head');
