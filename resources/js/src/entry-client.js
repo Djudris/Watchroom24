@@ -12,7 +12,6 @@ import "./app/main";
 
 window.onload = (event) =>
 {
-    console.log("Page Loaded");
     Vue.prototype.$mount = mount;
 
     // defines if the render location is the client
