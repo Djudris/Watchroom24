@@ -11,14 +11,14 @@ module.exports = env =>
         entry: "./resources/js/src/entry-client.js",
         output: {
             filename: "ceres-client" + (env.prod ? ".min" : "") + ".js",
-            chunkFilename: "chunks/ceres-client-[name]"+ (env.prod ? ".min" : "") + ".js",
-            path: path.resolve(__dirname, "..", "..", "resources/js/dist/"),
+            chunkFilename: "chunks/ceres-client-[name]" + (env.prod ? ".min" : "") + ".js",
+            path: path.resolve(__dirname, "..", "..", "resources/js/dist/")
         },
         externals: {
-            jquery: 'jQuery',
-            vue: 'Vue',
-            vuex: 'Vuex',
-            popper: 'Popper'
+            jquery: "jQuery",
+            vue: "Vue",
+            vuex: "Vuex",
+            popper: "Popper"
         },
         resolve: {
             alias: {
