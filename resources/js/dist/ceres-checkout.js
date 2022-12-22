@@ -819,6 +819,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "lazy-load",
   props: {
@@ -39727,7 +39728,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.enabled && _vm.isLoaded
-    ? _c("div", [_vm._t("default")], 2)
+    ? _c("div", [
+        _vm.isLoaded
+          ? _c("div", [_vm._t("default")], 2)
+          : _c("div", { staticClass: "component-loading" })
+      ])
     : _vm._e()
 }
 var staticRenderFns = []
@@ -78676,10 +78681,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
-/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.parse-int.js */ "./node_modules/core-js/modules/es.parse-int.js");
-/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.parse-int.js */ "./node_modules/core-js/modules/es.parse-int.js");
+/* harmony import */ var core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_parse_int_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _helper_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helper/utils */ "./resources/js/src/app/helper/utils.js");
 /* harmony import */ var _helper_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./helper/dom */ "./resources/js/src/app/helper/dom.js");
 /* harmony import */ var _helper_featureDetect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./helper/featureDetect */ "./resources/js/src/app/helper/featureDetect.js");
@@ -78833,9 +78838,6 @@ function CeresMain() {
   });
 }
 
-window.CeresMain = new CeresMain();
-window.CeresNotification = NotificationService;
-
 var showShopNotification = function showShopNotification(event) {
   if (event.detail.type) {
     switch (event.detail.type) {
@@ -78866,32 +78868,6 @@ var showShopNotification = function showShopNotification(event) {
   }
 };
 
-document.addEventListener("showShopNotification", showShopNotification); // fixate the header elements
-
-new _helper_HeaderScroller__WEBPACK_IMPORTED_MODULE_9__["default"]();
-$(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function (event, eventData, widgetElement) {
-  var parent = widgetElement[1];
-  var parentComponent = Object(_helper_utils__WEBPACK_IMPORTED_MODULE_6__["getContainingComponent"])(parent);
-  var compiled = Vue.compile(widgetElement[0].outerHTML, {
-    delimiters: ["${", "}"]
-  });
-  var component = new Vue({
-    store: window.ceresStore,
-    render: compiled.render,
-    staticRenderFns: compiled.staticRenderFns,
-    parent: parentComponent
-  });
-  component.$mount(widgetElement[0]);
-  $(component.$el).find("*").each(function (index, elem) {
-    $(elem).on("click", function (event) {
-      event.preventDefault();
-    });
-  });
-  $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function () {
-    window.dispatchEvent(new Event("resize"));
-  });
-});
-
 function fixPopperZIndexes() {
   var elements = document.querySelectorAll(".popover.d-none");
   var counter = elements.length;
@@ -78904,6 +78880,36 @@ function fixPopperZIndexes() {
     }
   });
 }
+
+window.onload = function (event) {
+  window.CeresMain = new CeresMain();
+  window.CeresNotification = NotificationService;
+  document.addEventListener("showShopNotification", showShopNotification); // fixate the header elements
+
+  new _helper_HeaderScroller__WEBPACK_IMPORTED_MODULE_9__["default"]();
+  $(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function (event, eventData, widgetElement) {
+    var parent = widgetElement[1];
+    var parentComponent = Object(_helper_utils__WEBPACK_IMPORTED_MODULE_6__["getContainingComponent"])(parent);
+    var compiled = Vue.compile(widgetElement[0].outerHTML, {
+      delimiters: ["${", "}"]
+    });
+    var component = new Vue({
+      store: window.ceresStore,
+      render: compiled.render,
+      staticRenderFns: compiled.staticRenderFns,
+      parent: parentComponent
+    });
+    component.$mount(widgetElement[0]);
+    $(component.$el).find("*").each(function (index, elem) {
+      $(elem).on("click", function (event) {
+        event.preventDefault();
+      });
+    });
+    $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function () {
+      window.dispatchEvent(new Event("resize"));
+    });
+  });
+};
 
 /***/ }),
 

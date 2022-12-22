@@ -2944,6 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "lazy-load",
   props: {
@@ -43415,7 +43416,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.enabled && _vm.isLoaded
-    ? _c("div", [_vm._t("default")], 2)
+    ? _c("div", [
+        _vm.isLoaded
+          ? _vm._ssrNode("<div>", "</div>", [_vm._t("default")], 2)
+          : _vm._ssrNode('<div class="component-loading"></div>')
+      ])
     : _vm._e()
 }
 var staticRenderFns = []
