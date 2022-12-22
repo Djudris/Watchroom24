@@ -85694,6 +85694,7 @@ Vue.component("basket-item-consent-check", _app_components_checkout_BasketItemCo
 Vue.component("edit-coupon-overlay", _app_components_myAccount_EditCouponOverlay_vue__WEBPACK_IMPORTED_MODULE_20__["default"]);
 
 
+console.log("Test");
 
 /***/ }),
 
