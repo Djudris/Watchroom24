@@ -27,20 +27,6 @@ class KALMARSServiceProvider extends ServiceProvider
 
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
-        $webhookService = pluginApp(\Legend\Services\WebhookService::class);
-        $dispatcher->listen('IO.tpl.login', function (TemplateContainer $container) use ($webhookService)
-        {
-            $webhookService->cronHandle();
-        }, self::PRIORITY);
-
-
-        $twig->addExtension(\Legend\Extensions\TwigServiceProvider::class);
-
-        $widgetRepository = pluginApp(ContentWidgetRepositoryContract::class);
-        $widgetClasses = WidgetCollection::all();
-        foreach ($widgetClasses as $widgetClass) {
-            $widgetRepository->registerWidget($widgetClass);
-        }
 
         $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
             $container->addStyleTemplate('KALMARS::Stylesheet');
