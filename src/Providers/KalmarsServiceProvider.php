@@ -29,6 +29,9 @@ class KALMARSServiceProvider extends ServiceProvider
     {
 
         $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
+            $container->removeStyleTemplate('Legend::Stylesheet');
+        }, self::PRIORITY);
+        $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
             $container->addStyleTemplate('KALMARS::Stylesheet');
             $container->addScriptTemplate('KALMARS::Script');
         }, self::PRIORITY);
