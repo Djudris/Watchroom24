@@ -1,7 +1,6 @@
 <?php
 
 namespace KALMARS\Providers;
-
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
@@ -12,14 +11,37 @@ use IO\Helper\ComponentContainer;
 use Plenty\Plugin\ConfigRepository;
 use Plenty\Modules\ShopBuilder\Contracts\ContentWidgetRepositoryContract;
 
+use KALMARS\Widgets\WidgetCollection;
 
+use KALMARS\Contracts\KeyValueRepositoryContract;
+use KALMARS\Repositories\KeyValueRepository;
 
+use KALMARS\Extensions\TwigServiceProvider;
+use KALMARS\Contexts\LegendSingleItemContext;
+use KALMARS\Services\WebhookService;
 
 class KALMARSServiceProvider extends ServiceProvider
 {
     const PRIORITY = 999;
+
+
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
+        $webhookService = pluginApp(\Legend\Services\WebhookService::class);
+        $dispatcher->listen('IO.tpl.login', function (TemplateContainer $container) use ($webhookService)
+        {
+            $webhookService->cronHandle();
+        }, self::PRIORITY);
+
+
+        $twig->addExtension(\Legend\Extensions\TwigServiceProvider::class);
+
+        $widgetRepository = pluginApp(ContentWidgetRepositoryContract::class);
+        $widgetClasses = WidgetCollection::all();
+        foreach ($widgetClasses as $widgetClass) {
+            $widgetRepository->registerWidget($widgetClass);
+        }
+
         $dispatcher->listen('IO.Resources.Import', function (ResourceContainer $container) {
             $container->addStyleTemplate('KALMARS::Stylesheet');
             $container->addScriptTemplate('KALMARS::Script');
