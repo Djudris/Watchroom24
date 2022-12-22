@@ -241,43 +241,43 @@ function fixPopperZIndexes()
     });
 }
 
-window.onload = (event) =>
+// window.onload = (event) =>
+// {
+window.CeresMain = new CeresMain();
+window.CeresNotification = NotificationService;
+
+document.addEventListener("showShopNotification", showShopNotification);
+
+// fixate the header elements
+new HeaderScroller();
+
+$(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function(event, eventData, widgetElement)
 {
-    window.CeresMain = new CeresMain();
-    window.CeresNotification = NotificationService;
+    const parent = widgetElement[1];
 
-    document.addEventListener("showShopNotification", showShopNotification);
+    const parentComponent = getContainingComponent(parent);
 
-    // fixate the header elements
-    new HeaderScroller();
+    const compiled = Vue.compile(widgetElement[0].outerHTML, { delimiters: ["${", "}"] });
+    const component = new Vue({
+        store: window.ceresStore,
+        render: compiled.render,
+        staticRenderFns: compiled.staticRenderFns,
+        parent: parentComponent
+    });
 
-    $(document).on("shopbuilder.after.drop shopbuilder.after.widget_replace", function(event, eventData, widgetElement)
+    component.$mount(widgetElement[0]);
+    $(component.$el).find("*").each(function(index, elem)
     {
-        const parent = widgetElement[1];
-
-        const parentComponent = getContainingComponent(parent);
-
-        const compiled = Vue.compile(widgetElement[0].outerHTML, { delimiters: ["${", "}"] });
-        const component = new Vue({
-            store: window.ceresStore,
-            render: compiled.render,
-            staticRenderFns: compiled.staticRenderFns,
-            parent: parentComponent
-        });
-
-        component.$mount(widgetElement[0]);
-        $(component.$el).find("*").each(function(index, elem)
+        $(elem).on("click", function(event)
         {
-            $(elem).on("click", function(event)
-            {
-                event.preventDefault();
-            });
-        });
-
-        $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function()
-        {
-            window.dispatchEvent(new Event("resize"));
+            event.preventDefault();
         });
     });
-};
+
+    $(component.$el).find(".owl-carousel").on("resized.owl.carousel", function()
+    {
+        window.dispatchEvent(new Event("resize"));
+    });
+});
+// };
 
