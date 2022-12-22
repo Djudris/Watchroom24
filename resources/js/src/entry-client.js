@@ -14,67 +14,67 @@ import "./app/main";
 // window.onload = (event) =>
 // {
 
-    Vue.prototype.$mount = mount;
+Vue.prototype.$mount = mount;
 
-    // defines if the render location is the client
-    App.isSSR = false;
-    App.isSSREnabled = App.config.log.performanceSsr;
+// defines if the render location is the client
+App.isSSR = false;
+App.isSSREnabled = App.config.log.performanceSsr;
 
-    beforeCreate();
+beforeCreate();
 
-    window.createApp = (selector) =>
+window.createApp = (selector) =>
+{
+    // client-specific bootstrapping logic...
+    const app = createApp({
+        template: "#ssr-script-container"
+    }, store);
+
+    app.$mount(selector, true);
+    window.vueApp = app;
+
+    initListener();
+
+    initClientListeners(store);
+    initClientStore(store);
+};
+
+const store = createStore();
+
+if (window.__INITIAL_STATE__)
+{
+    store.replaceState(window.__INITIAL_STATE__);
+}
+
+window.Vue = Vue;
+window.Vuex = Vuex;
+window.NotificationService = NotificationService;
+window.ceresTranslate = TranslationService.translate;
+window.vueEventHub = new Vue();
+window.ceresStore = store;
+window.vueEventHub = new Vue();
+if (App.config.log.checkSyntax)
+{
+    const rootElement = document.getElementById("vue-app");
+
+    rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
+    window.vueApp = new Vue({
+        store: window.ceresStore
+    });
+    vueApp.$mount( rootElement.cloneNode(true) );
+    if (vueApp.$el.id === "vue-app")
     {
-        // client-specific bootstrapping logic...
-        const app = createApp({
-            template: "#ssr-script-container"
-        }, store);
-
-        app.$mount(selector, true);
-        window.vueApp = app;
-
-        initListener();
-
-        initClientListeners(store);
-        initClientStore(store);
-    };
-
-    const store = createStore();
-
-    if (window.__INITIAL_STATE__)
-    {
-        store.replaceState(window.__INITIAL_STATE__);
+        document.body.replaceChild( vueApp.$el, rootElement );
     }
-
-    window.Vue = Vue;
-    window.Vuex = Vuex;
-    window.NotificationService = NotificationService;
-    window.ceresTranslate = TranslationService.translate;
-    window.vueEventHub = new Vue();
-    window.ceresStore = store;
-    window.vueEventHub = new Vue();
-    if (App.config.log.checkSyntax)
-    {
-        const rootElement = document.getElementById("vue-app");
-
-        rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
-        window.vueApp = new Vue({
-            store: window.ceresStore
-        });
-        vueApp.$mount( rootElement.cloneNode(true) );
-        if (vueApp.$el.id === "vue-app")
-        {
-            document.body.replaceChild( vueApp.$el, rootElement );
-        }
-    }
-    else
-    {
-        // eslint-disable-next-line no-unused-vars
-        window.vueApp = new Vue({
-            el: "#vue-app",
-            store: window.ceresStore
-        });
-    }
-    window.createApp("#vue-app");
+}
+else
+{
+    // eslint-disable-next-line no-unused-vars
+    window.vueApp = new Vue({
+        el: "#vue-app",
+        store: window.ceresStore
+    });
+}
+window.createApp("#vue-app");
 
 // };
 
