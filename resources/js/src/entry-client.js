@@ -9,7 +9,6 @@ import { initClientListeners, initClientStore, createStore } from "./app/store";
 import { initListener } from "./app/services/ApiService";
 import { mount } from "./mount";
 import "./app/jQuery";
-import "./app/main";
 
 window.onload = (event) =>
 {
@@ -54,6 +53,6 @@ window.onload = (event) =>
     window.vueEventHub = new Vue();
 
     window.createApp("#vue-app");
-
+    import "./app/main";
 };
 

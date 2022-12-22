@@ -40155,7 +40155,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mount__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./mount */ "./resources/js/src/mount.js");
 /* harmony import */ var _app_jQuery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app/jQuery */ "./resources/js/src/app/jQuery.js");
 /* harmony import */ var _app_main__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app/main */ "./resources/js/src/app/main.js");
+/* eslint-disable no-undefined */
 
+/* eslint-disable line-comment-position */
+
+/* eslint-disable id-length */
+
+/* eslint-disable no-var */
 
 
 
@@ -40202,6 +40208,8 @@ window.onload = function (event) {
   window.vueEventHub = new vue__WEBPACK_IMPORTED_MODULE_1___default.a();
   window.createApp("#vue-app");
 };
+
+
 
 /***/ }),
 
