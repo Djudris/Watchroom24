@@ -255,7 +255,7 @@
 <script defer src="{{ plugin_path('KALMARS') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
-<script src="{{ plugin_path('KALMARS') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script defer src="{{ plugin_path('KALMARS') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 
 {% for scriptTemplate in get_additional_scripts() %}
