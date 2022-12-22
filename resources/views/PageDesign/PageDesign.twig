@@ -58,14 +58,7 @@
 {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
 
 <script>
-    if('ontouchstart' in document.documentElement)
-    {
-        document.body.classList.add("touch");
-    }
-    else
-    {
-        document.body.classList.add("no-touch");
-    }
+    document.addEventListener('touchstart', onTouchStart, {passive: true});
 </script>
 <script>
    console.log('Initialized')
