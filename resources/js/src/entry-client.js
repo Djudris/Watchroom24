@@ -11,8 +11,8 @@ import { mount } from "./mount";
 import "./app/jQuery";
 import "./app/main";
 
-window.onload = (event) =>
-{
+// window.onload = (event) =>
+// {
 
     Vue.prototype.$mount = mount;
 
@@ -76,5 +76,5 @@ window.onload = (event) =>
     }
     window.createApp("#vue-app");
 
-};
+// };
 
