@@ -1,0 +1,15 @@
+<!-- SSR:global(ThemeConfig) -->
+<script id="theme-config-data" type="application/json">
+  {
+    "header": {
+      "enableDropLeft": "{{ config("Legend.header.enable_drop_left") | default(false) }}",
+      "dropLeftOffset": "{{ config("Legend.header.drop_left_offset") }}"
+    }
+  }
+</script>
+<!-- /SSR -->
+<script>window.ThemeConfig = JSON.parse(document.getElementById("theme-config-data").innerText);</script>
+
+<script defer src="{{ plugin_path('Legend') }}/js/dist/legend.min.js?v={{ buildHash }}"></script>
+
+{{ config('Legend.footer.custom_html') | raw }}

@@ -133,7 +133,7 @@ export default {
 
             this.addEventListeners();
         },
-        
+
         addEventListeners()
         {
             this.eventListener = window.addEventListener("resize", () =>
