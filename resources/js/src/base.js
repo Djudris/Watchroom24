@@ -21,6 +21,11 @@ window.Vuex = Vuex;
 import script2 from "./app/plugins/script2";
 Vue.use(script2);
 
+import "./app/jQuery";
+
+import "bootstrap";
+import "owl.carousel";
+
 import { getUrlParams } from "./app/services/UrlService";
 window.ceresEnv = getUrlParams()["env"];
 
