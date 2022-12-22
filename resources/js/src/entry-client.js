@@ -9,50 +9,50 @@ import { initClientListeners, initClientStore, createStore } from "./app/store";
 import { initListener } from "./app/services/ApiService";
 import { mount } from "./mount";
 import "./app/jQuery";
+//
+// window.onload = (event) =>
+// {
 
-window.onload = (event) =>
+Vue.prototype.$mount = mount;
+
+// defines if the render location is the client
+App.isSSR = false;
+App.isSSREnabled = App.config.log.performanceSsr;
+
+beforeCreate();
+
+window.createApp = (selector) =>
 {
+    // client-specific bootstrapping logic...
+    const app = createApp({
+        template: "#ssr-script-container"
+    }, store);
 
-    Vue.prototype.$mount = mount;
+    app.$mount(selector, true);
+    window.vueApp = app;
 
-    // defines if the render location is the client
-    App.isSSR = false;
-    App.isSSREnabled = App.config.log.performanceSsr;
+    initListener();
 
-    beforeCreate();
-
-    window.createApp = (selector) =>
-    {
-        // client-specific bootstrapping logic...
-        const app = createApp({
-            template: "#ssr-script-container"
-        }, store);
-
-        app.$mount(selector, true);
-        window.vueApp = app;
-
-        initListener();
-
-        initClientListeners(store);
-        initClientStore(store);
-    };
-
-    const store = createStore();
-
-    if (window.__INITIAL_STATE__)
-    {
-        store.replaceState(window.__INITIAL_STATE__);
-    }
-
-    window.Vue = Vue;
-    window.Vuex = Vuex;
-    window.NotificationService = NotificationService;
-    window.ceresTranslate = TranslationService.translate;
-    window.vueEventHub = new Vue();
-    window.ceresStore = store;
-    window.vueEventHub = new Vue();
-
-    window.createApp("#vue-app");
-    import "./app/main";
+    initClientListeners(store);
+    initClientStore(store);
 };
+
+const store = createStore();
+
+if (window.__INITIAL_STATE__)
+{
+    store.replaceState(window.__INITIAL_STATE__);
+}
+
+window.Vue = Vue;
+window.Vuex = Vuex;
+window.NotificationService = NotificationService;
+window.ceresTranslate = TranslationService.translate;
+window.vueEventHub = new Vue();
+window.ceresStore = store;
+window.vueEventHub = new Vue();
+
+window.createApp("#vue-app");
+import "./app/main";
+// };
 
