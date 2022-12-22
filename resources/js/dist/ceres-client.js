@@ -40141,34 +40141,22 @@ var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ "./node_modules/loda
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
-/* harmony import */ var core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
-/* harmony import */ var core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_includes_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _app_publicPath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app/publicPath */ "./resources/js/src/app/publicPath.js");
-/* harmony import */ var _app_publicPath__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_publicPath__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "vuex");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vuex__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _app_services_NotificationService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app/services/NotificationService */ "./resources/js/src/app/services/NotificationService.js");
-/* harmony import */ var _app_services_TranslationService__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app/services/TranslationService */ "./resources/js/src/app/services/TranslationService.js");
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app */ "./resources/js/src/app.js");
-/* harmony import */ var custom_event_polyfill__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! custom-event-polyfill */ "./node_modules/custom-event-polyfill/polyfill.js");
-/* harmony import */ var custom_event_polyfill__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(custom_event_polyfill__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _app_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app/store */ "./resources/js/src/app/store/index.js");
-/* harmony import */ var _app_services_ApiService__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app/services/ApiService */ "./resources/js/src/app/services/ApiService.js");
-/* harmony import */ var _mount__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./mount */ "./resources/js/src/mount.js");
-/* harmony import */ var _app_jQuery__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app/jQuery */ "./resources/js/src/app/jQuery.js");
-/* harmony import */ var _app_main__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app/main */ "./resources/js/src/app/main.js");
-
-
-
-
+/* harmony import */ var _app_publicPath__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/publicPath */ "./resources/js/src/app/publicPath.js");
+/* harmony import */ var _app_publicPath__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_app_publicPath__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "vuex");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuex__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _app_services_NotificationService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/services/NotificationService */ "./resources/js/src/app/services/NotificationService.js");
+/* harmony import */ var _app_services_TranslationService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app/services/TranslationService */ "./resources/js/src/app/services/TranslationService.js");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app */ "./resources/js/src/app.js");
+/* harmony import */ var custom_event_polyfill__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! custom-event-polyfill */ "./node_modules/custom-event-polyfill/polyfill.js");
+/* harmony import */ var custom_event_polyfill__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(custom_event_polyfill__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _app_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app/store */ "./resources/js/src/app/store/index.js");
+/* harmony import */ var _app_services_ApiService__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app/services/ApiService */ "./resources/js/src/app/services/ApiService.js");
+/* harmony import */ var _mount__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./mount */ "./resources/js/src/mount.js");
+/* harmony import */ var _app_jQuery__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app/jQuery */ "./resources/js/src/app/jQuery.js");
+/* harmony import */ var _app_main__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app/main */ "./resources/js/src/app/main.js");
 
 
 
@@ -40183,94 +40171,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.onload = function (event) {
-  vue__WEBPACK_IMPORTED_MODULE_5___default.a.prototype.$mount = _mount__WEBPACK_IMPORTED_MODULE_13__["mount"]; // defines if the render location is the client
+  vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$mount = _mount__WEBPACK_IMPORTED_MODULE_9__["mount"]; // defines if the render location is the client
 
   App.isSSR = false;
   App.isSSREnabled = App.config.log.performanceSsr;
-  Object(_app__WEBPACK_IMPORTED_MODULE_9__["beforeCreate"])();
+  Object(_app__WEBPACK_IMPORTED_MODULE_5__["beforeCreate"])();
 
   window.createApp = function (selector) {
     // client-specific bootstrapping logic...
-    var app = Object(_app__WEBPACK_IMPORTED_MODULE_9__["createApp"])({
+    var app = Object(_app__WEBPACK_IMPORTED_MODULE_5__["createApp"])({
       template: "#ssr-script-container"
     }, store);
     app.$mount(selector, true);
     window.vueApp = app;
-    Object(_app_services_ApiService__WEBPACK_IMPORTED_MODULE_12__["initListener"])();
-    Object(_app_store__WEBPACK_IMPORTED_MODULE_11__["initClientListeners"])(store);
-    Object(_app_store__WEBPACK_IMPORTED_MODULE_11__["initClientStore"])(store);
+    Object(_app_services_ApiService__WEBPACK_IMPORTED_MODULE_8__["initListener"])();
+    Object(_app_store__WEBPACK_IMPORTED_MODULE_7__["initClientListeners"])(store);
+    Object(_app_store__WEBPACK_IMPORTED_MODULE_7__["initClientStore"])(store);
   };
 
-  var store = Object(_app_store__WEBPACK_IMPORTED_MODULE_11__["createStore"])();
+  var store = Object(_app_store__WEBPACK_IMPORTED_MODULE_7__["createStore"])();
 
   if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
   }
 
-  window.Vue = vue__WEBPACK_IMPORTED_MODULE_5___default.a;
-  window.Vuex = vuex__WEBPACK_IMPORTED_MODULE_6___default.a;
-  window.NotificationService = _app_services_NotificationService__WEBPACK_IMPORTED_MODULE_7__["default"];
-  window.ceresTranslate = _app_services_TranslationService__WEBPACK_IMPORTED_MODULE_8__["default"].translate;
-  window.vueEventHub = new vue__WEBPACK_IMPORTED_MODULE_5___default.a();
+  window.Vue = vue__WEBPACK_IMPORTED_MODULE_1___default.a;
+  window.Vuex = vuex__WEBPACK_IMPORTED_MODULE_2___default.a;
+  window.NotificationService = _app_services_NotificationService__WEBPACK_IMPORTED_MODULE_3__["default"];
+  window.ceresTranslate = _app_services_TranslationService__WEBPACK_IMPORTED_MODULE_4__["default"].translate;
+  window.vueEventHub = new vue__WEBPACK_IMPORTED_MODULE_1___default.a();
   window.ceresStore = store;
-  window.vueEventHub = new vue__WEBPACK_IMPORTED_MODULE_5___default.a();
-
-  if (App.config.log.checkSyntax) {
-    var rootElement = document.getElementById("vue-app");
-    rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
-    window.vueApp = new vue__WEBPACK_IMPORTED_MODULE_5___default.a({
-      store: window.ceresStore
-    });
-    vueApp.$mount(rootElement.cloneNode(true));
-
-    if (vueApp.$el.id === "vue-app") {
-      document.body.replaceChild(vueApp.$el, rootElement);
-    }
-  } else {
-    // eslint-disable-next-line no-unused-vars
-    window.vueApp = new vue__WEBPACK_IMPORTED_MODULE_5___default.a({
-      el: "#vue-app",
-      store: window.ceresStore
-    });
-  }
-
+  window.vueEventHub = new vue__WEBPACK_IMPORTED_MODULE_1___default.a();
   window.createApp("#vue-app");
-  jQuery.event.special.touchstart = {
-    // eslint-disable-next-line id-length
-    setup: function setup(_, ns, handle) {
-      this.addEventListener("touchstart", handle, {
-        passive: !ns.includes("noPreventDefault")
-      });
-    }
-  };
-  jQuery.event.special.touchmove = {
-    // eslint-disable-next-line id-length
-    setup: function setup(_, ns, handle) {
-      this.addEventListener("touchmove", handle, {
-        passive: !ns.includes("noPreventDefault")
-      });
-    }
-  };
-  jQuery.event.special.wheel = {
-    setup: function setup(_, ns, handle) {
-      this.addEventListener("wheel", handle, {
-        passive: true
-      });
-    }
-  };
-  jQuery.event.special.mousewheel = {
-    setup: function setup(_, ns, handle) {
-      this.addEventListener("mousewheel", handle, {
-        passive: true
-      });
-    }
-  };
-
-  if ("ontouchstart" in document.documentElement) {
-    document.body.classList.add("touch");
-  } else {
-    document.body.classList.add("no-touch");
-  }
 };
 
 /***/ }),

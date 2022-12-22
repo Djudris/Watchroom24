@@ -1,6 +1,6 @@
 {% import "Ceres::PageDesign.Macros.IncludeComponents" as Loader %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Ceres::PageDesign.Macros.Translations" as Translations %}
+{% import "Legend::PageDesign.Macros.Translations" as Translations %}
 {{ component( "Ceres::PageDesign.Components.Notifications" ) }}
 {{ component( "Ceres::PageDesign.Components.Popper" ) }}
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
@@ -18,22 +18,15 @@
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
 
 <head>
-
     {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningHeadTag") }}
 
     {{ get_consent_scripts(ceresConfig.global.blockCookies) }}
 
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
+    {% include getPartial('head') %}
 
     {% block PartialHead %}
         {% embed getPartial('page-metadata') %}{% endembed %}
     {% endblock %}
-
-    {% include getPartial('head') %}
-
 
     {% for styleTemplate in get_additional_styles() %}
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
@@ -45,17 +38,28 @@
     {% if isItem %}
         {{ LayoutContainer.show("Ceres::SingleItem.Styles") }}
     {% endif %}
-
 </head>
 
-<body class="{{ bodyClasses | join(' ') }} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
+<body class="{{ bodyClasses | join(' ') }}{% if isShopBuilder %} isShopBuilder{%endif%} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
+
+<script>
+    if('ontouchstart' in document.documentElement)
+    {
+        document.body.classList.add("touch");
+    }
+    else
+    {
+        document.body.classList.add("no-touch");
+    }
+</script>
 
 <!-- SSR:app() -->
 <div id="vue-app" class="app">
@@ -65,6 +69,8 @@
     </lazy-hydrate>
 
     {% include getPartial('header') %}
+
+    {% include "Legend::PageDesign.Components.TemplateHeaders" %}
 
     <div id="page-body" class="main">
         {% block PageBody %}{% endblock %}
@@ -194,7 +200,6 @@
 </div>
 <!-- /SSR -->
 
-
 <!-- SSR:global(App) -->
 <script id="app-data" type="application/json">
     {
@@ -250,7 +255,8 @@
 {% if ceresConfig.log.performanceLevel  == 'development' %}
     {% set minSuffix = '' %}
 {% endif %}
-<!-- SSR:entry({{ ssr_entry('KALMARS', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
+
+<!-- SSR:entry({{ ssr_entry('Ceres', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
 <script defer src="{{ plugin_path('KALMARS') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
@@ -262,14 +268,14 @@
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
 
-{{ LayoutContainer.show("KALMARS::Script.AfterScriptsLoaded") }}
+{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
 {% if assetName == 'ceres-checkout' %}
-    {{ LayoutContainer.show("KALMARS::Checkout.AfterScriptsLoaded") }}
+    {{ LayoutContainer.show("Ceres::Checkout.AfterScriptsLoaded") }}
 {% endif %}
 
 {% if isItem %}
-    {{ LayoutContainer.show("KALMARS::SingleItem.AfterScriptsLoaded") }}
+    {{ LayoutContainer.show("Ceres::SingleItem.AfterScriptsLoaded") }}
 {% endif %}
 
 <!-- SSR:on() -->
@@ -280,7 +286,28 @@
 
 <!-- SSR:off() -->
 <script>
-
+    window.vueEventHub = new Vue();
+    if (App.config.log.checkSyntax)
+    {
+        var rootElement = document.getElementById("vue-app");
+        rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
+        window.vueApp = new Vue({
+            store: window.ceresStore
+        });
+        vueApp.$mount( rootElement.cloneNode(true) );
+        if (vueApp.$el.id === "vue-app")
+        {
+            document.body.replaceChild( vueApp.$el, rootElement );
+        }
+    }
+    else
+    {
+        // eslint-disable-next-line no-unused-vars
+        window.vueApp = new Vue({
+            el: "#vue-app",
+            store: window.ceresStore
+        });
+    }
 </script>
 <!-- /SSR -->
 

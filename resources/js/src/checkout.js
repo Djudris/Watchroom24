@@ -31,4 +31,3 @@ import EditCouponOverlay from "./app/components/myAccount/EditCouponOverlay.vue"
 Vue.component("edit-coupon-overlay", EditCouponOverlay);
 import "./app/components/myAccount/OrderHistoryList";
 import "./app/components/myAccount/OrderReturnHistoryList";
-console.log("Test");

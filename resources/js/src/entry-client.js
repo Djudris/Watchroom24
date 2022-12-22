@@ -52,64 +52,8 @@ window.onload = (event) =>
     window.vueEventHub = new Vue();
     window.ceresStore = store;
     window.vueEventHub = new Vue();
-    if (App.config.log.checkSyntax)
-    {
-        const rootElement = document.getElementById("vue-app");
 
-        rootElement.innerHTML = rootElement.innerHTML.replace(/(?:^|\s)(?::|v-bind:)\S+=(?:""|'')/g, "");
-        window.vueApp = new Vue({
-            store: window.ceresStore
-        });
-        vueApp.$mount(rootElement.cloneNode(true));
-        if (vueApp.$el.id === "vue-app")
-        {
-            document.body.replaceChild(vueApp.$el, rootElement);
-        }
-    }
-    else
-    {
-        // eslint-disable-next-line no-unused-vars
-        window.vueApp = new Vue({
-            el: "#vue-app",
-            store: window.ceresStore
-        });
-    }
     window.createApp("#vue-app");
 
-    jQuery.event.special.touchstart = {
-        // eslint-disable-next-line id-length
-        setup: function(_, ns, handle)
-        {
-            this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-        }
-    };
-    jQuery.event.special.touchmove = {
-        // eslint-disable-next-line id-length
-        setup: function(_, ns, handle)
-        {
-            this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-        }
-    };
-    jQuery.event.special.wheel = {
-        setup: function(_, ns, handle)
-        {
-            this.addEventListener("wheel", handle, { passive: true });
-        }
-    };
-    jQuery.event.special.mousewheel = {
-        setup: function(_, ns, handle)
-        {
-            this.addEventListener("mousewheel", handle, { passive: true });
-        }
-    };
-
-    if ("ontouchstart" in document.documentElement)
-    {
-        document.body.classList.add("touch");
-    }
-    else
-    {
-        document.body.classList.add("no-touch");
-    }
 };
 
