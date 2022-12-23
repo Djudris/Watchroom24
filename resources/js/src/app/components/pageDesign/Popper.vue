@@ -30,7 +30,7 @@ import { isNullOrUndefined } from "../../helper/utils";
 import { findParent } from "../../helper/dom";
 import { findModal } from "../../services/ModalService";
 import Vue from "vue";
-import Popper from "popper.js";
+// import Popper from "popper.js";
 
 export default {
     props: {

@@ -1,6 +1,7 @@
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const WebpackRequireFrom = require("webpack-require-from");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 module.exports = env =>
 {
@@ -17,7 +18,8 @@ module.exports = env =>
         externals: {
             jquery: "jQuery",
             vue: "Vue",
-            vuex: "Vuex"
+            vuex: "Vuex",
+            popper: "popper"
         },
         resolve: {
             alias: {
@@ -59,7 +61,9 @@ module.exports = env =>
             }),
             new WebpackRequireFrom({
                 replaceSrcMethodName: "__loadPluginChunk"
-            })
+            }),
+            new BundleAnalyzerPlugin()
+
         ]
     };
 };
